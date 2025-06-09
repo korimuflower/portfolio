@@ -1,0 +1,12 @@
+{
+  "name": "the-internet-tests",
+  "version": "1.0.0",
+  "description": "Playwright tests for the-internet.herokuapp.com",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.42.1",
+    "@types/node": "^20.11.24"
+  }
+} 
