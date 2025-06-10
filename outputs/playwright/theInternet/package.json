@@ -9,6 +9,8 @@
     "format": "prettier --write \"**/*.{ts,js,json}\""
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.28.0",
     "@playwright/test": "^1.42.1",
     "@types/node": "^20.11.24",
     "@typescript-eslint/eslint-plugin": "^8.33.1",
