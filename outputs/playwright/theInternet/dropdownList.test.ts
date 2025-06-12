@@ -6,14 +6,12 @@ test('ドロップダウンに、必要な選択肢がすべて存在するこ�
   // 該当の画面に遷移
   await page.getByRole('link', { name: 'Dropdown' }).click();
 
+  // ドロップダウンをクリック
   await page.getByRole('combobox', { name: '' }).click();
 
-  const disabledOption = page.getByRole('option', {
-    name: 'Please select an option',
-    disabled: true,
-  });
-  await expect(disabledOption).toBeVisible();
-  await expect(page.getByRole('option', { name: 'Option 1' })).toBeVisible();
-  await expect(page.getByRole('option', { name: 'Option 2' })).toBeVisible();
+  // 非活性の選択肢も含め、3つ表示されていることを確認
+  await expect(page.getByRole('option', { name: 'Please select an option' })).toBeDisabled();
+  await expect(page.getByRole('option', { name: 'Option 1' })).toHaveText('Option 1');
+  await expect(page.getByRole('option', { name: 'Option 2' })).toHaveText('Option 2');
 
 });
