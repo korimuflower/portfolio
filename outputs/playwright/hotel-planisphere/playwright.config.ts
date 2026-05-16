@@ -7,7 +7,10 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
 export default defineConfig({
   testDir: './tests',
   use: {
-    baseURL: 'https://hotel-example-site.takeyaqa.dev/ja/',
+    baseURL: 'https://hotel-example-site.takeyaqa.dev',
     trace: 'on-first-retry',
   },
+
+  reporter: [['html', { open: 'on-failure',outputFolder: 'playwright-report'}]],
+
 });
