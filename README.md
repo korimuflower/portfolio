@@ -8,4 +8,4 @@
   - `posts/` - Zennに投稿した技術記事のアーカイブ
   - `templates/` - バグ報告用テンプレート
   - `playwright/` - テストファイルのサンプル
-    - `theInternet/` - 『The Internet』に対するテスト
+    - `hotel-planisphere` - 『hotel-planisphere』に対するテスト
