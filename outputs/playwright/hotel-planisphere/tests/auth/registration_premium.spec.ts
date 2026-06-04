@@ -17,7 +17,7 @@ test('プレミアムアカウントを新規作成できること。',async({pa
 
     // 改修により『会員登録』の文言が複数表示される可能性もあるので、ナビゲーションバーをロケーターとして指定
     await page.goto('/ja/');
-    await page.locator('nav').getByRole('button', { name: '会員登録'}).click();
+    await page.locator('nav').getByRole('link', { name: '会員登録'}).click();
 
     await page.getByLabel('メールアドレス').fill(registrationMailaddress);
 
