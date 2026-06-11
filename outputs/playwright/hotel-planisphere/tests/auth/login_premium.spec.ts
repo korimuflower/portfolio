@@ -7,7 +7,7 @@ test('プレミアムアカウントでログインできること。', async ({
   await page.goto('/ja/');
 
   // 『ログイン』ボタンが2つあるので、一度目はナビゲーションバー内を指定
-  await page.locator('nav').getByRole('button', { name: 'ログイン' }).click();
+  await page.getByRole('navigation').getByRole('button', { name: 'ログイン' }).click();
 
   await page.getByLabel('メールアドレス').fill(email);
   await page.getByLabel('パスワード').fill(password);
