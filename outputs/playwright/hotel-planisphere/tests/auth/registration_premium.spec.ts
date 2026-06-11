@@ -13,19 +13,24 @@ test('プレミアムアカウントを新規作成できること。',async({pa
     // ダミーのメールアドレス・パスワード・氏名を生成
     // 任意項目である住所・電話番号・性別・生年月日は入力しない
 
-    const registrationMailaddress = `${randomAlphaNumeric(10)}@example.com`;
+    const registrationEmail = `${randomAlphaNumeric(10)}@example.com`;
     const registrationPassword = `${randomAlphaNumeric(12)}`;
     const registrationName = `${randomAlphaNumeric(10)}dummyname`;
 
-    // 改修により『会員登録』の文言が複数表示される可能性もあるので、ナビゲーションバーをロケーターとして指定
     await page.goto('/ja/');
-    await page.locator('nav').getByRole('link', { name: '会員登録'}).click();
 
-    await page.getByLabel('メールアドレス').fill(registrationMailaddress);
+    // 改修により『会員登録』の文言が複数表示される可能性もあるので、ナビゲーションバーをロケーターとして指定
+    await page.getByRole('navigation').getByRole('link', { name: '会員登録', exact: true }).click();
+
+    await page.getByLabel('メールアドレス').fill(registrationEmail);
     await page.getByLabel('パスワード 必須').fill(registrationPassword);
     await page.getByLabel('パスワード（確認） 必須').fill(registrationPassword);
+    await page.getByLabel('氏名 必須').fill(registrationName);
+
     await page.getByRole('button',{ name: '登録' }).click();
 
-    // ToDo:登録後の画面表示を確認し、作成が成功したことを示す
+    // 『マイページ』のテキストと、登録済みのメールアドレスが表示される＝新規作成成功とみなす
+    await expect(page.getByRole('heading', { name: 'マイページ' })).toBeVisible();
+    await expect(page.getByText(registrationEmail)).toBeVisible();
 
 });
