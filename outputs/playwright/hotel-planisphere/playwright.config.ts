@@ -9,6 +9,7 @@ export default defineConfig({
   use: {
     baseURL: 'https://hotel-example-site.takeyaqa.dev',
     trace: 'on-first-retry',
+    video: 'retain-on-failure'
   },
 
   reporter: [['html', { open: 'on-failure',outputFolder: 'playwright-report'}]],
